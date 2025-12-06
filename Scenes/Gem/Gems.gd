@@ -4,6 +4,10 @@ const falling_rate : float = 100.0
 var screen_width : float
 var screen_height : float
 
+func dead() -> void:
+	set_process(false)
+	queue_free()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var screen_size = get_viewport_rect().size
@@ -16,5 +20,7 @@ func _process(delta: float) -> void:
 
 	if position.y > screen_height:
 		print("Gem Off of the screen")
-		set_process(false)
-		queue_free() 
+		dead()
+
+func _collision_gem(area: Area2D) -> void:
+	dead()
