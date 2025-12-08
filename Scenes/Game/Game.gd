@@ -1,1 +1,22 @@
 extends Node2D
+
+const GEM = preload("res://Scenes/Gem/Gems.tscn")
+
+var left_edge : float
+var right_edge : float
+var spawn_height : float = -50.0 # spawn height is above screen
+var edge_margin : float = 50
+
+func _ready() -> void:
+	# -50 & +50 because don't want the gem to spawn on the screen edges
+	left_edge = get_viewport_rect().position.x + edge_margin
+	right_edge = get_viewport_rect().end.x - edge_margin
+
+func spawn_gem() -> void:
+	var new_gem = GEM.instantiate()
+	var random_x = randf_range(left_edge, right_edge)
+	new_gem.position = Vector2(random_x, spawn_height)
+	add_child(new_gem)
+
+func _on_timer_timeout() -> void:
+	spawn_gem()

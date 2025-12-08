@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b30qs1o2lsorw"]
+[gd_scene load_steps=4 format=3 uid="uid://b30qs1o2lsorw"]
 
 [ext_resource type="Script" uid="uid://c6pyj2q15equ6" path="res://Scenes/Game/Game.gd" id="1_ln2h6"]
 [ext_resource type="Texture2D" uid="uid://ccwrlyauj7l5q" path="res://Assets/GameBg.png" id="1_rdw05"]
 [ext_resource type="PackedScene" uid="uid://cnt10f4tgvl57" path="res://Scenes/Paddle/Paddle.tscn" id="2_gwu2e"]
-[ext_resource type="PackedScene" uid="uid://efbl70608k7e" path="res://Scenes/Gem/Gems.tscn" id="3_xbxml"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ln2h6")
@@ -17,11 +16,8 @@ centered = false
 position = Vector2(586, 598)
 scale = Vector2(0.6, 0.6)
 
-[node name="Gem_1" parent="." instance=ExtResource("3_xbxml")]
-position = Vector2(330, 167)
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
-[node name="Gem_2" parent="." instance=ExtResource("3_xbxml")]
-position = Vector2(853, 284)
-
-[node name="Gem_3" parent="." instance=ExtResource("3_xbxml")]
-position = Vector2(573, 75)
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

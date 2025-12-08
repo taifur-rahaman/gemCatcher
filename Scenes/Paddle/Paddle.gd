@@ -30,4 +30,4 @@ func _process(delta: float) -> void:
 
 
 func _collision_paddle(area: Area2D) -> void:
-	print("Something Coliided with Paddle")
+	print("+1 Point")

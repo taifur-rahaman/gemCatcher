@@ -19,3 +19,4 @@ scale = Vector2(1.8, 1.8)
 shape = SubResource("RectangleShape2D_f7j2x")
 
 [connection signal="area_entered" from="." to="." method="_collision_gem"]
+[connection signal="gem_of_screen" from="." to="." method="_on_gem_of_screen"]
